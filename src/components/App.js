@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import DogBar from "./DogBar";
+import DogView from "./DogView";
 
 const API = "http://localhost:3001/pups";
 
@@ -12,7 +13,7 @@ function App() {
     fetch( API ).then( response => response.json() ).then( setDogs );
   }, [] );
 
-  console.log( currentDog );
+  // console.log( currentDog );
 
   return (
     <div className="App">
@@ -24,7 +25,7 @@ function App() {
       </div>
       <div id="dog-summary-container">
         <h1>DOGGO:</h1>
-        <div id="dog-info"></div>
+        <DogView dogs={ dogs } setDogs={ setDogs } currentDog={ currentDog } setCurrentDog={ setCurrentDog } apiUrl={ API }/>
       </div>
     </div>
   );
